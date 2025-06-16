@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Infinite Quotes Flashcards</title>
+<style>
+  body {
+    background: #000;
+    color: #0f0;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    user-select: none;
+    overflow: hidden;
+  }
+  #quoteCard {
+    max-width: 600px;
+    padding: 2rem;
+    border: 2px solid #0f0;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 20px #0f0;
+    transition: box-shadow 0.3s ease;
+  }
+  #quoteCard:hover {
+    box-shadow: 0 0 40px #0f0;
+  }
+  #quote {
+    font-size: 1.5rem;
+    line-height: 1.6;
+  }
+  #author {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #0a0;
+  }
+  #instruction {
+    position: absolute;
+    bottom: 20px;
+    font-size: 0.9rem;
+    color: #0a0;
+    font-family: monospace;
+  }
+</style>
+</head>
+<body>
+  <div id="quoteCard" title="Click to see next quote">
+    <div id="quote">Loading...</div>
+    <div id="author"></div>
+  </div>
+  <div id="instruction">Click anywhere to cycle quotes</div>
+
+<script>
+  const quotes = [
+    { quote: "The Matrix is everywhere. It is all around us.", author: "Morpheus" },
+    { quote: "I know kung fu.", author: "Neo" },
+    { quote: "There is no spoon.", author: "The Spoon Boy" },
+    { quote: "What is real? How do you define real?", author: "Morpheus" },
+    { quote: "Unfortunately, no one can be told what the Matrix is. You have to see it for yourself.", author: "Morpheus" },
+    { quote: "Free your mind.", author: "Morpheus" },
+    { quote: "The body cannot live without the mind.", author: "Ancient Proverb" },
+    { quote: "To know thyself is the beginning of wisdom.", author: "Socrates" },
+    { quote: "Man is the measure of all things.", author: "Protagoras" },
+    { quote: "He who knows others is wise; he who knows himself is enlightened.", author: "Lao Tzu" }
+  ];
+
+  let index = 0;
+  const quoteEl = document.getElementById('quote');
+  const authorEl = document.getElementById('author');
+  const card = document.getElementById('quoteCard');
+
+  function showQuote(i) {
+    const q = quotes[i];
+    quoteEl.textContent = `"${q.quote}"`;
+    authorEl.textContent = `— ${q.author}`;
+  }
+
+  function nextQuote() {
+    index = (index + 1) % quotes.length;
+    showQuote(index);
+  }
+
+  card.addEventListener('click', nextQuote);
+
+  // Show the first quote immediately
+  showQuote(index);
+</script>
+</body>
+</html>
