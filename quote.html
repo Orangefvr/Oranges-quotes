@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Infinite Matrix Quotes Generator</title>
+<style>
+  body {
+    background: #0f0f0f;
+    color: #a8e6cf;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+  }
+  #quote {
+    background: #1b1b1b;
+    border: 2px solid #a8e6cf;
+    border-radius: 12px;
+    padding: 30px 40px;
+    max-width: 700px;
+    font-size: 1.5rem;
+    text-align: center;
+    user-select: none;
+    box-shadow: 0 0 15px #a8e6cf99;
+    min-height: 120px;
+    transition: transform 0.3s ease;
+  }
+  button {
+    margin-top: 25px;
+    background: #a8e6cf;
+    color: #0f0f0f;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background 0.2s ease;
+  }
+  button:hover {
+    background: #79d2b0;
+  }
+</style>
+</head>
+<body>
+
+<div id="quote">Click "Generate" for infinite wisdom.</div>
+<button id="generateBtn">Generate Quote</button>
+
+<script>
+  const beginnings = [
+    "The chains you cannot see",
+    "The mind that sleeps",
+    "The flame hidden beneath illusion",
+    "The silent prison",
+    "The eye that sees beyond the veil",
+    "Freedom is",
+    "Wisdom waits",
+    "To awaken the soul",
+    "The greatest prison",
+    "In the silence of false comfort"
+  ];
+
+  const middles = [
+    "are the hardest to break.",
+    "believes itself awake.",
+    "is kindled only by the brave.",
+    "must be shattered.",
+    "is burdened with the truth of shadows.",
+    "is a flame hidden beneath layers of illusion.",
+    "like a dormant storm.",
+    "one must first shatter certainty.",
+    "is the mind convinced of its own freedom.",
+    "waits like a dormant storm."
+  ];
+
+  const ends = [
+    "Few dare to seek the light.",
+    "Truth is the silent sword.",
+    "Only those who see can be free.",
+    "Illusion fades before the brave.",
+    "Chains exist only in belief.",
+    "Awaken and walk the path.",
+    "Silence hides the greatest wisdom.",
+    "The veil is thinner than you think.",
+    "Beyond the shadows lies clarity.",
+    "Seek beyond the known."
+  ];
+
+  const quoteEl = document.getElementById('quote');
+  const btn = document.getElementById('generateBtn');
+
+  btn.addEventListener('click', () => {
+    // Pick random pieces
+    const part1 = beginnings[Math.floor(Math.random() * beginnings.length)];
+    const part2 = middles[Math.floor(Math.random() * middles.length)];
+    const part3 = ends[Math.floor(Math.random() * ends.length)];
+
+    // Combine into a new quote
+    const newQuote = `${part1} ${part2} ${part3}`;
+
+    quoteEl.style.transform = 'scale(0.9)';
+    setTimeout(() => {
+      quoteEl.textContent = newQuote;
+      quoteEl.style.transform = 'scale(1)';
+    }, 150);
+  });
+</script>
+
+</body>
+</html>
